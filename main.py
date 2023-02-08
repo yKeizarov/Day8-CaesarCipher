@@ -1,9 +1,9 @@
 # Caesar cipher
 import re
-import string
+import alphabet as alt
 
-ALPHABET = list(string.ascii_lowercase)
-
+ALPHABET = alt.use_alphabet
+MAX_INDEX = len(ALPHABET) - 1
 
 def encode(text):
     encoding = re.split(" ", text.lower())
@@ -15,8 +15,8 @@ def encode(text):
             if single_letter != "." and single_letter != ",":
                 sl_index = ALPHABET.index(single_letter)
                 new_index = sl_index + encode_value
-                if new_index >= 25:
-                    encode_index = new_index - 26
+                if new_index >= MAX_INDEX:
+                    encode_index = new_index - (MAX_INDEX + 1)
                     new_sl = ALPHABET[encode_index]
                     new_word.append(new_sl)
                 else:
@@ -45,7 +45,7 @@ def decode(text):
                 sl_index = ALPHABET.index(single_letter)
                 new_index = sl_index - decode_value
                 if -1 >= new_index >= -9:
-                    decode_index = 26 + new_index
+                    decode_index = (MAX_INDEX + 1) + new_index
                     new_sl = ALPHABET[decode_index]
                     new_word.append(new_sl)
                 else:
