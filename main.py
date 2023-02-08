@@ -5,6 +5,7 @@ import alphabet as alt
 ALPHABET = alt.use_alphabet
 MAX_INDEX = len(ALPHABET) - 1
 
+
 def encode(text):
     encoding = re.split(" ", text.lower())
     encode_value = int(input("ENTER ENCRYPTION VALUE IN RANGE AT 1 TO 10: "))
